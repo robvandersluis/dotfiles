@@ -162,6 +162,10 @@ vim.opt.scrolloff = 8
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- move selected block with J and K
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
 -- disable macro recording
 vim.keymap.set("n", "q", "<Nop>")
 vim.keymap.set("n", "Q", "<Nop>")

@@ -162,9 +162,10 @@ vim.opt.scrolloff = 8
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
--- my keymaps
+-- disable macro recording
 vim.keymap.set("n", "q", "<Nop>")
 vim.keymap.set("n", "Q", "<Nop>")
+
 vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
 vim.keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 

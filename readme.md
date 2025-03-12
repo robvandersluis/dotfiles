@@ -9,7 +9,7 @@ Dit is mijn persoonlijke dotfiles repository. Hierin staan configuratiebestanden
 ```sh
 # Clone naar je home directory
 cd ~
-git clone https://github.com/jouwgebruikersnaam/dotfiles.git
+git clone git@github.com:robvandersluis/dotfiles.git .dotfiles
 ```
 
 ### 2. Symlinks instellen
@@ -18,14 +18,16 @@ git clone https://github.com/jouwgebruikersnaam/dotfiles.git
 Maak een symbolic link naar de configuratiemap (bijvoorbeeld voor Neovim):
 
 ```sh
-ln -s ~/dotfiles/nvim ~/.config/nvim
+ln -s ~/.dotfiles/nvim ~/.config/nvim
 ```
 
 #### Windows (PowerShell)
 Maak een symbolic link naar de configuratiemap:
 
 ```powershell
-New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim -Target $HOME\dotfiles\nvim
+#New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim -Target $HOME\dotfiles\nvim
+New-Item -ItemType SymbolicLink -Path $Home\.config\nvim -Target $HOME\.dotfiles\nvim
+
 ```
 
 Of via Command Prompt (cmd):

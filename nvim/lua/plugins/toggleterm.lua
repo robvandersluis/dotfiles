@@ -13,13 +13,22 @@ return {
 	},
 	version = "*",
 	config = function()
+		local os_name = vim.loop.os_uname().sysname
+		local shell = "/bin/bash" -- Default voor Unix
+
+		if os_name == "Windows_NT" then
+			shell = "pwsh.exe -NoLogo"
+		elseif os_name == "Darwin" then
+			shell = "/bin/zsh" -- Standaard shell op macOS
+		end
+
 		require("toggleterm").setup({
 
 			start_in_insert = true,
 			terminal_mappings = true,
 			-- direction = 'float',
 			-- shell = "pwsh.exe -NoLogo -NoProfile",
-			shell = "pwsh.exe -NoLogo",
+			shell = shell,
 			auto_scroll = true,
 			-- persist_mode = true,
 			persist_size = true,

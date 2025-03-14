@@ -11,7 +11,7 @@ else
 	-- Linux (en WSL) keybindings
 	vim.keymap.set("n", "<M-s>", ":w<CR>", { noremap = true, silent = true }) -- Alt+S save
 end
-
+--
 -- move selected block with J and K
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

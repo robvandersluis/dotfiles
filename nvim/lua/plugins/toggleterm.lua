@@ -1,15 +1,13 @@
 return {
 	"akinsho/toggleterm.nvim",
-	-- event = "VeryLazy",
-	-- cmd = "ToggleTerm",
 	keys = {
-
 		{ "<C-\\>", "<cmd>:1ToggleTerm direction=float<CR>", mode = { "n", "i", "t" } },
 		{ "<M-F1>", "<cmd>:2ToggleTerm direction=horizontal size=20<CR>", mode = { "n", "t" } },
 		{ "<M-F2>", "<cmd>:3ToggleTerm direction=vertical size=100<CR>", mode = { "n", "t" } },
 		{ "<M-F3>", "<cmd>:4ToggleTerm direction=float<CR>", mode = { "n", "t" } },
-		-- { "<leader>gl", function() end, mode = { "n", "t" } },
-		-- { "<leader>fr", function() end, mode = { "n", "t" } },
+		{ "<leader>gs", "<cmd>:lua _git_status_toggle()<CR>", mode = { "n", "t" }, desc = "Git status in terminal" },
+		{ "<leader>gd", "<cmd>:lua _git_diff_toggle()<CR>", mode = { "n", "t" }, desc = "Git diff in terminal" },
+		{ "<leader>gl", "<cmd>:lua _git_log_toggle()<CR>", mode = { "n", "t" }, desc = "Git log in terminal" },
 	},
 	version = "*",
 	config = function()
@@ -23,35 +21,50 @@ return {
 		end
 
 		require("toggleterm").setup({
-
 			start_in_insert = true,
 			terminal_mappings = true,
-			-- direction = 'float',
-			-- shell = "pwsh.exe -NoLogo -NoProfile",
 			shell = shell,
 			auto_scroll = true,
-			-- persist_mode = true,
 			persist_size = true,
 			close_on_exit = true,
 		})
-		-- function _lazygit_toggle()
-		-- local Terminal = require('toggleterm.terminal').Terminal
-		-- local lazygit = Terminal:new({ cmd = 'lazygit', hidden = true, direction = 'float' })
-		-- lazygit:toggle()
-		-- end
 
-		-- vim.keymap.set({ 'n', 't' }, '<leader>gl', function() _lazygit_toggle() end)
-		-- vim.keymap.set({ "n", "t" }, "<leader>gl", function()
-		-- 	local terminal = require("toggleterm.terminal").Terminal
-		-- 	local lazygit = terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
-		-- 	lazygit:toggle()
-		-- end, { desc = "LazyGit" })
+		local Terminal = require("toggleterm.terminal").Terminal
 
-		-- vim.keymap.set({ "n", "t" }, "<leader>fr", function()
-		-- 	local terminal = require("toggleterm.terminal").Terminal
-		-- 	local scooter = terminal:new({ cmd = "scooter", hidden = true, direction = "float" })
-		-- 	scooter:toggle()
-		-- end, { desc = "Find and Replace" })
+		-- Git Status Terminal
+		local git_status = Terminal:new({
+			cmd = "git status; exec $SHELL",
+			hidden = true,
+			direction = "float",
+			close_on_exit = false,
+		})
+
+		function _git_status_toggle()
+			git_status:toggle()
+		end
+
+		-- Git Diff Terminal
+		local git_diff = Terminal:new({
+			cmd = "git diff; exec $SHELL",
+			hidden = true,
+			direction = "float",
+			close_on_exit = false,
+		})
+
+		function _git_diff_toggle()
+			git_diff:toggle()
+		end
+
+		-- Git Log Terminal
+		local git_log = Terminal:new({
+			cmd = "git log --oneline --graph --all; exec $SHELL",
+			hidden = true,
+			direction = "float",
+			close_on_exit = false,
+		})
+
+		function _git_log_toggle()
+			git_log:toggle()
+		end
 	end,
 }
---

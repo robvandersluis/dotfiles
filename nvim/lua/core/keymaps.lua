@@ -1,17 +1,9 @@
-local os_name = vim.loop.os_uname().sysname
---
-if os_name == "Darwin" then
-	-- vim.keymap.set("n", "<D-s>", ":w<CR>") -- ⌘+S save
-	vim.keymap.set("i", "<C-v>", "<C-r>+", { noremap = true, silent = true }) -- ⌘+V pasten in insert mode
-	vim.keymap.set("n", "<C-S>", ":w<CR>", { noremap = true, silent = true }) -- Control+S save
-elseif os_name == "Windows_NT" then
-	-- Windows keybindings
-	vim.keymap.set("n", "<C-S>", ":w<CR>", { noremap = true, silent = true }) -- Control+S save
-	vim.keymap.set("i", "<C-S>", "<ESC>:w<CR>", { noremap = true, silent = true }) -- Control+S save insert mode
-else
-	-- Linux (en WSL) keybindings
-	vim.keymap.set("n", "<M-s>", ":w<CR>", { noremap = true, silent = true }) -- Alt+S save
-end
+-- ctrl + s to save
+vim.keymap.set("n", "<C-S>", ":w<CR>", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-S>", "<ESC>:w<CR>", { noremap = true, silent = true })
+
+-- ctrl + v to paste
+vim.keymap.set("i", "<C-v>", "<C-r>+", { noremap = true, silent = true })
 --
 -- move selected block with J and K
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -27,7 +19,6 @@ vim.keymap.set("n", "Q", "<Nop>")
 
 -- open Explorer
 vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
---
 
 vim.keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 -- paste over selected text, keep the same buffer

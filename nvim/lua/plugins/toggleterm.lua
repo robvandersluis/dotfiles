@@ -33,7 +33,7 @@ return {
 
 		-- Git Status Terminal
 		local git_status = Terminal:new({
-			cmd = "git status; exec $SHELL",
+			cmd = "git status && " .. shell,
 			hidden = true,
 			direction = "float",
 			close_on_exit = false,
@@ -66,5 +66,11 @@ return {
 		function _git_log_toggle()
 			git_log:toggle()
 		end
+
+		vim.keymap.set({ "n", "t" }, "<leader>gl", function()
+			local terminal = require("toggleterm.terminal").Terminal
+			local lazygit = terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
+			lazygit:toggle()
+		end, { desc = "LazyGit" })
 	end,
 }

@@ -16,14 +16,18 @@ end
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- move current line with J and K
+vim.keymap.set("n", "K", ":m .-2<CR>==")
+vim.keymap.set("n", "J", ":m .+1<CR>==")
+
 -- disable macro recording
 vim.keymap.set("n", "q", "<Nop>")
 vim.keymap.set("n", "Q", "<Nop>")
 
 -- open Explorer
 vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
-
 --
+
 vim.keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 -- paste over selected text, keep the same buffer
@@ -58,6 +62,5 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 --vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 --vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 --vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
-
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows

@@ -7,6 +7,7 @@ if os_name == "Darwin" then
 elseif os_name == "Windows_NT" then
 	-- Windows keybindings
 	vim.keymap.set("n", "<C-S>", ":w<CR>", { noremap = true, silent = true }) -- Control+S save
+	vim.keymap.set("i", "<C-S>", "<ESC>:w<CR>", { noremap = true, silent = true }) -- Control+S save insert mode
 else
 	-- Linux (en WSL) keybindings
 	vim.keymap.set("n", "<M-s>", ":w<CR>", { noremap = true, silent = true }) -- Alt+S save
@@ -29,7 +30,6 @@ vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
 --
 
 vim.keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
-
 -- paste over selected text, keep the same buffer
 vim.keymap.set("x", "<leader>p", [["_dP]])
 

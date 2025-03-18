@@ -1,6 +1,7 @@
 return {
 	"github/copilot.vim",
 	config = function()
+		-- Accepteer suggestie met Ctrl+J
 		vim.keymap.set("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
 			expr = true,
 			replace_keycodes = false,
@@ -46,14 +47,5 @@ return {
 		vim.keymap.set("n", "<leader>cd", copilot_disable, { desc = "Copilot uitschakelen" })
 		vim.keymap.set("n", "<leader>ct", copilot_toggle, { desc = "Copilot togglen" })
 		vim.keymap.set("n", "<leader>cb", copilot_toggle_buffer, { desc = "Copilot per buffer togglen" })
-
-		-- Automatisch Copilot uitschakelen bij Markdown-bestanden
-		vim.api.nvim_create_autocmd("FileType", {
-			pattern = "markdown",
-			callback = function()
-				vim.b.copilot_enabled = 0
-				vim.cmd("Copilot disable")
-			end,
-		})
 	end,
 }

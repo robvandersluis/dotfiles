@@ -301,7 +301,7 @@ require("lazy").setup({
 			{ "j-hui/fidget.nvim", opts = {} },
 
 			-- Allows extra capabilities provided by nvim-cmp
-			"hrsh7th/cmp-nvim-lsp",
+			--			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
 			local capabilities = require("blink.cmp").get_lsp_capabilities()

@@ -7,7 +7,6 @@ return {
 		{ "<M-F3>", "<cmd>:4ToggleTerm direction=float<CR>", mode = { "n", "t" } },
 		{ "<leader>gs", "<cmd>:lua _git_status_toggle()<CR>", mode = { "n", "t" }, desc = "Git status in terminal" },
 		{ "<leader>gd", "<cmd>:lua _git_diff_toggle()<CR>", mode = { "n", "t" }, desc = "Git diff in terminal" },
-		{ "<leader>gl", "<cmd>:lua _git_log_toggle()<CR>", mode = { "n", "t" }, desc = "Git log in terminal" },
 	},
 	version = "*",
 	config = function()
@@ -45,7 +44,7 @@ return {
 
 		-- Git Diff Terminal
 		local git_diff = Terminal:new({
-			cmd = "git diff; exec $SHELL",
+			cmd = "git diff && " .. shell,
 			hidden = true,
 			direction = "float",
 			close_on_exit = false,
@@ -53,18 +52,6 @@ return {
 
 		function _git_diff_toggle()
 			git_diff:toggle()
-		end
-
-		-- Git Log Terminal
-		local git_log = Terminal:new({
-			cmd = "git log --oneline --graph --all; exec $SHELL",
-			hidden = true,
-			direction = "float",
-			close_on_exit = false,
-		})
-
-		function _git_log_toggle()
-			git_log:toggle()
 		end
 
 		vim.keymap.set({ "n", "t" }, "<leader>gl", function()

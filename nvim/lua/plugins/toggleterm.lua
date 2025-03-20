@@ -2,7 +2,7 @@ return {
 	"akinsho/toggleterm.nvim",
 	keys = {
 		{ "<C-\\>", "<cmd>:1ToggleTerm direction=float<CR>", mode = { "n", "i", "t" } },
-		{ "<C-1>", "<cmd>:2ToggleTerm direction=horizontal size=20<CR>", mode = { "n", "t" } },
+		{ "<C-1>", "<cmd>:2ToggleTerm direction=horizontal size=14<CR>", mode = { "n", "t" } },
 		{ "<leader>gs", "<cmd>:lua _git_status_toggle()<CR>", mode = { "n", "t" }, desc = "Git status in terminal" },
 		{ "<leader>gd", "<cmd>:lua _git_diff_toggle()<CR>", mode = { "n", "t" }, desc = "Git diff in terminal" },
 	},
@@ -51,6 +51,32 @@ return {
 		function _git_diff_toggle()
 			git_diff:toggle()
 		end
+		local function get_git_branch()
+			local handle = io.popen("git rev-parse --abbrev-ref HEAD 2>/dev/null")
+			local result = handle:read("*a")
+			handle:close()
+			return result:gsub("\n", "") -- Verwijder newline
+		end
+
+		local live_server = Terminal:new({
+			cmd = "live-server", -- Command om live-server te starten
+			hidden = true,
+			direction = "float", -- Opties: "horizontal", "vertical", "float", "tab"
+			close_on_exit = false, -- Server blijft draaien na sluiten van terminal
+			start_in_insert = true,
+		})
+
+		function _live_server_toggle()
+			live_server:toggle()
+		end
+
+		vim.api.nvim_set_keymap(
+			"n",
+			"<leader>ls",
+			"<cmd>lua _live_server_toggle()<CR>",
+			{ noremap = true, silent = true }
+		)
+
 		-- LazyGit
 		vim.keymap.set({ "n", "t" }, "<leader>gl", function()
 			local terminal = require("toggleterm.terminal").Terminal

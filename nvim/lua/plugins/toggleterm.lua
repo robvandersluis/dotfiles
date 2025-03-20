@@ -35,7 +35,7 @@ return {
 			cmd = "git status && " .. shell,
 			hidden = true,
 			direction = "float",
-			close_on_exit = false,
+			close_on_exit = true,
 		})
 
 		function _git_status_toggle()
@@ -47,7 +47,7 @@ return {
 			cmd = "git --no-pager diff && " .. shell,
 			hidden = true,
 			direction = "float",
-			close_on_exit = false,
+			close_on_exit = true,
 		})
 
 		function _git_diff_toggle()

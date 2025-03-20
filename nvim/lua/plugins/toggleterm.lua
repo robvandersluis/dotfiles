@@ -2,9 +2,9 @@ return {
 	"akinsho/toggleterm.nvim",
 	keys = {
 		{ "<C-\\>", "<cmd>:1ToggleTerm direction=float<CR>", mode = { "n", "i", "t" } },
-		{ "<M-F1>", "<cmd>:2ToggleTerm direction=horizontal size=20<CR>", mode = { "n", "t" } },
-		{ "<M-F2>", "<cmd>:3ToggleTerm direction=vertical size=100<CR>", mode = { "n", "t" } },
-		{ "<M-F3>", "<cmd>:4ToggleTerm direction=float<CR>", mode = { "n", "t" } },
+		{ "<C-1>", "<cmd>:2ToggleTerm direction=horizontal size=20<CR>", mode = { "n", "t" } },
+		{ "<C-2>", "<cmd>:3ToggleTerm direction=vertical size=100<CR>", mode = { "n", "t" } },
+		{ "<C-3>", "<cmd>:4ToggleTerm direction=float<CR>", mode = { "n", "t" } },
 		{ "<leader>gs", "<cmd>:lua _git_status_toggle()<CR>", mode = { "n", "t" }, desc = "Git status in terminal" },
 		{ "<leader>gd", "<cmd>:lua _git_diff_toggle()<CR>", mode = { "n", "t" }, desc = "Git diff in terminal" },
 	},
@@ -44,7 +44,7 @@ return {
 
 		-- Git Diff Terminal
 		local git_diff = Terminal:new({
-			cmd = "git diff && " .. shell,
+			cmd = "git --no-pager diff && " .. shell,
 			hidden = true,
 			direction = "float",
 			close_on_exit = false,
@@ -53,7 +53,7 @@ return {
 		function _git_diff_toggle()
 			git_diff:toggle()
 		end
-
+		-- LazyGit
 		vim.keymap.set({ "n", "t" }, "<leader>gl", function()
 			local terminal = require("toggleterm.terminal").Terminal
 			local lazygit = terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })

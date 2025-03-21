@@ -39,6 +39,7 @@ return {
 
 		function _git_status_toggle()
 			git_status:toggle()
+			print("🚨 Geen Git-repository gevonden!")
 		end
 
 		-- Git Diff Terminal

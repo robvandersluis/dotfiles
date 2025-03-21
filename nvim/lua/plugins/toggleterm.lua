@@ -34,6 +34,7 @@ return {
 			hidden = true,
 			direction = "float",
 			close_on_exit = true,
+			start_in_insert = true,
 		})
 
 		function _git_status_toggle()
@@ -46,16 +47,11 @@ return {
 			hidden = true,
 			direction = "float",
 			close_on_exit = true,
+			start_in_insert = true,
 		})
 
 		function _git_diff_toggle()
 			git_diff:toggle()
-		end
-		local function get_git_branch()
-			local handle = io.popen("git rev-parse --abbrev-ref HEAD 2>/dev/null")
-			local result = handle:read("*a")
-			handle:close()
-			return result:gsub("\n", "") -- Verwijder newline
 		end
 
 		local live_server = Terminal:new({
@@ -77,6 +73,12 @@ return {
 			{ noremap = true, silent = true }
 		)
 
+		local function get_git_branch()
+			local handle = io.popen("git rev-parse --abbrev-ref HEAD 2>/dev/null")
+			local result = handle:read("*a")
+			handle:close()
+			return result:gsub("\n", "") -- Verwijder newline
+		end
 		-- LazyGit
 		vim.keymap.set({ "n", "t" }, "<leader>gl", function()
 			local terminal = require("toggleterm.terminal").Terminal

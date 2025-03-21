@@ -1,0 +1,24 @@
+color torte
+syntax on
+
+set number
+set relativenumber
+set nobackup 
+set tabstop=2
+
+inoremap jj <Esc>
+nnoremap K :m .-2==<CR>
+nnoremap J :m .+1==<CR>
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+nnoremap <C-s> :w<CR>
+nnoremap <C-q> :q<CR>
+nnoremap <C-x> :q!<CR>
+
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+

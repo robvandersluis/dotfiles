@@ -24,16 +24,7 @@ return {
 	},
 	version = "*",
 	config = function()
-		-- local os_name = vim.loop.os_uname().sysname
-		-- local shell = "/bin/bash" -- Default voor Unix
-		--
-		-- if os_name == "Windows_NT" then
-		-- 	shell = "pwsh.exe -NoLogo"
-		-- elseif os_name == "Darwin" then
-		-- 	shell = "/bin/zsh" -- Standaard shell op macOS
-		-- end
 		local shell = require("utils").shell()
-
 		require("toggleterm").setup({
 			start_in_insert = true,
 			terminal_mappings = true,

@@ -55,31 +55,26 @@ return {
 			git_diff:toggle()
 		end
 
-		local live_server = Terminal:new({
-			cmd = "live-server", -- Command om live-server te starten
-			hidden = true,
-			direction = "float", -- Opties: "horizontal", "vertical", "float", "tab"
-			close_on_exit = false, -- Server blijft draaien na sluiten van terminal
-			start_in_insert = true,
-		})
-
-		function _live_server_toggle()
-			live_server:toggle()
-		end
-
-		vim.api.nvim_set_keymap(
-			"n",
-			"<leader>ls",
-			"<cmd>lua _live_server_toggle()<CR>",
-			{ noremap = true, silent = true }
-		)
-
 		local function get_git_branch()
 			local handle = io.popen("git rev-parse --abbrev-ref HEAD 2>/dev/null")
 			local result = handle:read("*a")
 			handle:close()
 			return result:gsub("\n", "") -- Verwijder newline
 		end
+
+		-- Live Server in Terminal
+		vim.keymap.set({ "n", "t" }, "<leader>ls", function()
+			local terminal = require("toggleterm.terminal").Terminal
+			local live_server = terminal:new({
+				cmd = "live-server",
+				hidden = true,
+				direction = "float",
+				close_on_exit = false,
+				start_in_insert = true,
+			})
+			live_server:toggle()
+		end, { desc = "Live Server" })
+
 		-- LazyGit
 		vim.keymap.set({ "n", "t" }, "<leader>gl", function()
 			local terminal = require("toggleterm.terminal").Terminal

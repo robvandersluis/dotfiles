@@ -24,14 +24,15 @@ return {
 	},
 	version = "*",
 	config = function()
-		local os_name = vim.loop.os_uname().sysname
-		local shell = "/bin/bash" -- Default voor Unix
-
-		if os_name == "Windows_NT" then
-			shell = "pwsh.exe -NoLogo"
-		elseif os_name == "Darwin" then
-			shell = "/bin/zsh" -- Standaard shell op macOS
-		end
+		-- local os_name = vim.loop.os_uname().sysname
+		-- local shell = "/bin/bash" -- Default voor Unix
+		--
+		-- if os_name == "Windows_NT" then
+		-- 	shell = "pwsh.exe -NoLogo"
+		-- elseif os_name == "Darwin" then
+		-- 	shell = "/bin/zsh" -- Standaard shell op macOS
+		-- end
+		local shell = require("utils").shell()
 
 		require("toggleterm").setup({
 			start_in_insert = true,
@@ -54,16 +55,11 @@ return {
 					close_on_exit = true,
 					start_in_insert = true,
 				})
+				terminals[cmd]:open()
+			else
+				terminals[cmd]:toggle()
 			end
-			terminals[cmd]:toggle()
 		end
-
-		-- local function get_git_branch()
-		-- 	local handle = io.popen("git rev-parse --abbrev-ref HEAD 2>/dev/null")
-		-- 	local result = handle:read("*a")
-		-- 	handle:close()
-		-- 	return result:gsub("\n", "") -- Verwijder newline
-		-- end
 
 		-- LazyGit
 		vim.keymap.set({ "n", "t" }, "<leader>gl", function()

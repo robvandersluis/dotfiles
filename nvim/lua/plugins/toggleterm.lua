@@ -2,6 +2,7 @@ return {
 	"akinsho/toggleterm.nvim",
 	keys = {
 		{ "<C-\\>", "<cmd>:1ToggleTerm direction=float<CR>", mode = { "n", "i", "t" } },
+		{ "<C-F1>", "<cmd>:1ToggleTerm direction=horizontal size=12<CR>", mode = { "n", "t" } },
 		{ "<M-F1>", "<cmd>:2ToggleTerm direction=horizontal size=12<CR>", mode = { "n", "t" } },
 		{
 			"<leader>gS",

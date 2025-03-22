@@ -52,12 +52,5 @@ return {
 				terminals[cmd]:toggle()
 			end
 		end
-
-		-- LazyGit
-		-- vim.keymap.set({ "n", "t" }, "<leader>gl", function()
-		-- 	local terminal = require("toggleterm.terminal").Terminal
-		-- 	local lazygit = terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
-		-- 	lazygit:toggle()
-		-- end, { desc = "LazyGit" })
 	end,
 }

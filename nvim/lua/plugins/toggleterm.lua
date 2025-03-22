@@ -10,6 +10,12 @@ return {
 			desc = "Git status in terminal",
 		},
 		{
+			"<leader>DD",
+			"<cmd>:lua _terminal_toggle('dotnet build')<CR>",
+			mode = { "n", "t" },
+			desc = "dotnet build in terminal",
+		},
+		{
 			"<leader>gD",
 			"<cmd>:lua _terminal_toggle('git --no-pager diff')<CR>",
 			mode = { "n", "t" },
@@ -37,8 +43,6 @@ return {
 		})
 
 		local Terminal = require("toggleterm.terminal").Terminal
-
-		-- Cache van dynamisch aangemaakte terminals per commando
 		local terminals = {}
 
 		function _terminal_toggle(cmd)

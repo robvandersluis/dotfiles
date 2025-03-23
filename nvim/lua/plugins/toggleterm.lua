@@ -2,11 +2,11 @@ return {
 	"akinsho/toggleterm.nvim",
 	keys = {
 		{ "<C-\\>", "<cmd>:1ToggleTerm direction=float<CR>", mode = { "n", "i", "t" } },
-		{ "<C-F1>", "<cmd>:1ToggleTerm direction=horizontal size=12<CR>", mode = { "n", "t" } },
-		{ "<M-F1>", "<cmd>:2ToggleTerm direction=horizontal size=12<CR>", mode = { "n", "t" } },
+		{ "<C-1>", "<cmd>:1ToggleTerm direction=horizontal size=12<CR>", mode = { "n", "t" } },
+		{ "<C-2>", "<cmd>:2ToggleTerm direction=horizontal size=12<CR>", mode = { "n", "t" } },
 		{
 			"<leader>gS",
-			"<cmd>:lua _terminal_toggle('git status')<CR>",
+			"<cmd>:lua _terminal_toggle('git sstatustatus')<CR>",
 			mode = { "n", "t" },
 			desc = "Git status in terminal",
 		},

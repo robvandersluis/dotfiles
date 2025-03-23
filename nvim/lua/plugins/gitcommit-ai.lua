@@ -1,6 +1,7 @@
 return {
 	{
-		dir = "~/plugins/gitcommit-ai.nvim",
+	--	dir = "~/plugins/gitcommit-ai.nvim",
+    "robvandersluis/gitcommit-ai.nvim",
 		config = function()
 			require("gitcommit").setup({
 				model = "gpt-4o-mini",

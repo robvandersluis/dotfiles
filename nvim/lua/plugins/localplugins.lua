@@ -7,5 +7,6 @@ return {
 				--		api_key = os.getenv("OPENAI_API_KEY"),
 			})
 		end,
+		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 }

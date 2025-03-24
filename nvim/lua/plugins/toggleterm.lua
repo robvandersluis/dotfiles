@@ -6,7 +6,7 @@ return {
 		{ "<C-2>", "<cmd>:2ToggleTerm direction=horizontal size=12<CR>", mode = { "n", "t" } },
 		{
 			"<leader>gS",
-			"<cmd>:lua _terminal_toggle('git sstatustatus')<CR>",
+			"<cmd>:lua _terminal_toggle('git status')<CR>",
 			mode = { "n", "t" },
 			desc = "Git status in terminal",
 		},

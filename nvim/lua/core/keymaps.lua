@@ -1,34 +1,43 @@
--- ctrl + s to save
+-- Exits insert mode with jj
+vim.keymap.set("i", "jj", "<ESC>")
+
+-- End of line motions (similar to $)
+vim.keymap.set({ "n", "o", "x" }, ";", "$", { desc = "End" })
+vim.keymap.set("n", "d;", "d$", { desc = "Delete" })
+vim.keymap.set("n", "y;", "y$", { desc = "Yank" })
+vim.keymap.set("n", "c;", "c$", { desc = "Change" })
+
+-- Ctrl + s to save
 vim.keymap.set("n", "<C-S>", ":w<CR>", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-S>", "<ESC>:w<CR>", { noremap = true, silent = true })
 
--- close buffer
-vim.keymap.set("n", "<leader>q", ":bd<CR>")
-
--- ctrl + v to paste
+-- Ctrl + v to paste in insert mode
 vim.keymap.set("i", "<C-v>", "<C-r>+", { noremap = true, silent = true })
---
--- move selected block with J and K
+
+-- Paste over selection without overwriting default register
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
+-- Move selected block up/down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- move current line with J and K
+-- Move current line up/down
 vim.keymap.set("n", "K", ":m .-2<CR>==")
 vim.keymap.set("n", "J", ":m .+1<CR>==")
 
--- disable macro recording
+-- Macro recording
 vim.keymap.set("n", "q", "<Nop>")
-vim.keymap.set("n", "Q", "<Nop>")
+vim.keymap.set("n", "<leader>m", "q")
 
--- open Explorer
-vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
+-- Close Current Buffer
+vim.keymap.set("n", "<leader>q", ":bd<CR>")
 
-vim.keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
--- paste over selected text, keep the same buffer
-vim.keymap.set("x", "<leader>p", [["_dP]])
-
--- exit all no save
+-- Exit all no save
+vim.keymap.set("n", "ZQ", "<Nop>")
 vim.keymap.set("n", "<leader>x", ":qa!<CR>")
+--
+-- File Explorer
+vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
 
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })

@@ -24,12 +24,12 @@ return {
 			},
 		}
 
-		if utils.is_windows() then
-			table.insert(keys, { "<C-F1>", "<cmd>:1ToggleTerm direction=horizontal size=12<CR>", mode = { "n", "t" } })
-			table.insert(keys, { "<C-F2>", "<cmd>:2ToggleTerm direction=horizontal size=12<CR>", mode = { "n", "t" } })
-		elseif utils.is_mac() then
+		if utils.is_mac() then
 			table.insert(keys, { "<C-1>", "<cmd>:1ToggleTerm direction=horizontal size=12<CR>", mode = { "n", "t" } })
 			table.insert(keys, { "<C-2>", "<cmd>:2ToggleTerm direction=horizontal size=12<CR>", mode = { "n", "t" } })
+		else
+			table.insert(keys, { "<C-F1>", "<cmd>:1ToggleTerm direction=horizontal size=12<CR>", mode = { "n", "t" } })
+			table.insert(keys, { "<C-F2>", "<cmd>:2ToggleTerm direction=horizontal size=12<CR>", mode = { "n", "t" } })
 		end
 
 		return keys

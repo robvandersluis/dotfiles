@@ -82,7 +82,7 @@ require("lazy").setup({
 	--
 	-- For example, in the following configuration, we use:
 	--  event = 'VimEnter'
-	--
+
 	-- which loads which-key before all the UI elements are loaded. Events can be
 	-- normal autocommands events (`:help autocmd-events`).
 	--

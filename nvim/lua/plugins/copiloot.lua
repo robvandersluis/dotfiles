@@ -1,14 +1,13 @@
 return {
 	"github/copilot.vim",
 	config = function()
-		-- Accepteer suggestie met Ctrl+J
+		-- Accept with Ctrl+J
 		vim.keymap.set("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
 			expr = true,
 			replace_keycodes = false,
 		})
 		vim.g.copilot_no_tab_map = true
 
-		-- Functies om Copilot in/uit te schakelen globaal
 		local function copilot_enable()
 			vim.cmd("Copilot enable")
 			print("✅ Copilot ingeschakeld")
@@ -28,7 +27,6 @@ return {
 			end
 		end
 
-		-- Functie om Copilot per buffer uit te schakelen
 		local function copilot_toggle_buffer()
 			local buf_status = vim.b.copilot_enabled
 			if buf_status == nil or buf_status == 1 then
@@ -42,7 +40,7 @@ return {
 			end
 		end
 
-		-- Mappings voor togglen
+		-- Mappings
 		vim.keymap.set("n", "<leader>ce", copilot_enable, { desc = "Copilot inschakelen" })
 		vim.keymap.set("n", "<leader>cd", copilot_disable, { desc = "Copilot uitschakelen" })
 		vim.keymap.set("n", "<leader>ct", copilot_toggle, { desc = "Copilot togglen" })

@@ -2,6 +2,9 @@
 vim.keymap.set("n", "<C-S>", ":w<CR>", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-S>", "<ESC>:w<CR>", { noremap = true, silent = true })
 
+-- close buffer
+vim.keymap.set("n", "<leader>q", ":bd<CR>")
+
 -- ctrl + v to paste
 vim.keymap.set("i", "<C-v>", "<C-r>+", { noremap = true, silent = true })
 --
@@ -38,7 +41,7 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "<leader>Q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which

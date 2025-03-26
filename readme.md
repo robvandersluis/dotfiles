@@ -1,5 +1,4 @@
 # Dotfiles Repository
- neus 
 Dit is mijn persoonlijke dotfiles repository. Hierin staan configuratiebestanden voor verschillende tools en editors die ik gebruik. Door gebruik te maken van symlinks kan ik eenvoudig dezelfde configuratie op meerdere machines toepassen.
 
 ## Installatie

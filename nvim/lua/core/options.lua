@@ -4,7 +4,7 @@ vim.opt.backup = false
 
 vim.g.have_nerd_font = true
 
-vim.g.netrw_keepdir = 0
+--vim.g.netrw_keepdir = 0
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!

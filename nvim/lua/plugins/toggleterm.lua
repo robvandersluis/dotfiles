@@ -8,19 +8,25 @@ return {
 				"<leader>gS",
 				"<cmd>:lua _terminal_toggle('git status')<CR>",
 				mode = { "n", "t" },
-				desc = "Git status in terminal",
+				desc = "Git status",
 			},
 			{
-				"<leader>DD",
+				"<leader>DB",
 				"<cmd>:lua _terminal_toggle('dotnet build')<CR>",
 				mode = { "n", "t" },
-				desc = "dotnet build in terminal",
+				desc = "dotnet build",
+			},
+			{
+				"<leader>gL",
+				"<cmd>lua _terminal_toggle('git --no-pager log --oneline --since=\"3 days ago\"')<CR>",
+				mode = { "n", "t" },
+				desc = "Git log last 3 days",
 			},
 			{
 				"<leader>gD",
 				"<cmd>:lua _terminal_toggle('git --no-pager diff')<CR>",
 				mode = { "n", "t" },
-				desc = "Git diff in terminal",
+				desc = "Git diff",
 			},
 		}
 

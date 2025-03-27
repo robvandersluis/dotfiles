@@ -55,9 +55,11 @@ return {
 		local terminals = {}
 
 		function _terminal_toggle(cmd)
+			local dir = vim.fn.expand("%:p:h") -- directory active buffer
 			if terminals[cmd] == nil then
 				terminals[cmd] = Terminal:new({
 					cmd = cmd .. " && " .. utils.shell(),
+					dir = dir,
 					hidden = true,
 					direction = "float",
 					close_on_exit = true,

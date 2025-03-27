@@ -1,4 +1,4 @@
--- Exits insert mode with jj
+--  Exits insert mode with jj
 vim.keymap.set("i", "jj", "<ESC>")
 
 -- End of line motions (similar to $)
@@ -7,12 +7,16 @@ vim.keymap.set("n", "d;", "d$", { desc = "Delete" })
 vim.keymap.set("n", "y;", "y$", { desc = "Yank" })
 vim.keymap.set("n", "c;", "c$", { desc = "Change" })
 
+-- Select all
+vim.keymap.set("n", "<leader>a", "gg0VG", { desc = "Select all from column 0" })
+
 -- Ctrl + s to save
 vim.keymap.set("n", "<C-S>", ":w<CR>", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-S>", "<ESC>:w<CR>", { noremap = true, silent = true })
 
--- Ctrl + v to paste in insert mode
+-- undo and paste in insert mode with <C-z> and <C-v>
 vim.keymap.set("i", "<C-v>", "<C-r>+", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-z>", "<Esc>u", { noremap = true, silent = true })
 
 -- Paste over selection without overwriting default register
 vim.keymap.set("x", "<leader>p", [["_dP]])

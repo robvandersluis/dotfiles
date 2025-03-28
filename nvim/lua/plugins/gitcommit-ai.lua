@@ -1,7 +1,6 @@
 return {
 	{
-		dir = "~/plugins/gitcommit-ai.nvim",
-		--		"robvandersluis/gitcommit-ai.nvim",
+		"robvandersluis/gitcommit-ai.nvim",
 		config = function()
 			require("gitcommit").setup({
 				stage_all = false, -- manually stage changes

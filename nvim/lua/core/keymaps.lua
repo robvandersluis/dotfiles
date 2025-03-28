@@ -40,9 +40,6 @@ vim.keymap.set("n", "<leader>q", ":bd<CR>")
 vim.keymap.set("n", "ZQ", "<Nop>")
 vim.keymap.set("n", "<leader>x", ":qa!<CR>")
 --
--- File Explorer
-vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
-
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
@@ -71,3 +68,10 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n><C-w>w", { desc = "Exit terminal m
 --vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
+--
+--
+---- File Explorer
+vim.keymap.set("n", "<leader>pv", ":Ex<CR>", { desc = "Explore current file directory" })
+vim.keymap.set("n", "<leader>ph", function()
+	vim.cmd("Ex " .. vim.fn.expand("~"))
+end, { desc = "Explore home directory" })

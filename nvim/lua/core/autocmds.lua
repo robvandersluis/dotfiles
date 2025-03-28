@@ -20,7 +20,7 @@ autocmd("FileType", {
 	end,
 })
 
--- Markdown: spellcheck, wrap, en fatsoenlijke indent
+-- Markdown: spellcheck, wrap,
 autocmd("FileType", {
 	pattern = "markdown",
 	callback = function()
@@ -43,5 +43,15 @@ autocmd("FileType", {
 		vim.opt_local.shiftwidth = 8
 		vim.opt_local.softtabstop = 0
 		vim.opt_local.expandtab = false
+	end,
+})
+-- Web stack: HTML, CSS, JS, PHP
+autocmd("FileType", {
+	pattern = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "php" },
+	callback = function()
+		vim.opt_local.tabstop = 2
+		vim.opt_local.shiftwidth = 2
+		vim.opt_local.softtabstop = 2
+		vim.opt_local.expandtab = true
 	end,
 })

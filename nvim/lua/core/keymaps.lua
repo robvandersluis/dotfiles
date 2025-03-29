@@ -21,6 +21,10 @@ vim.keymap.set("i", "<C-z>", "<Esc>u", { noremap = true, silent = true })
 -- Paste over selection without overwriting default register
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
+
+-- ctrl + q visual block mode
+vim.keymap.set("n", "<C-q>", "<C-v>")
+
 -- Move selected block up/down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

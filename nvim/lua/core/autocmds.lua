@@ -34,7 +34,12 @@ autocmd("FileType", {
 		vim.opt_local.expandtab = true
 	end,
 })
-
+autocmd("FileType", {
+	pattern = "c",
+	callback = function()
+		vim.opt_local.wrap = false
+	end,
+})
 -- C#
 autocmd("FileType", {
 	pattern = "cs",
